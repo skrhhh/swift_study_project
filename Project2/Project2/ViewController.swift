@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(showScore))
         //禁用自动转换
         button1.translatesAutoresizingMaskIntoConstraints = false
         button2.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +84,12 @@ class ViewController: UIViewController {
             button1.centerYAnchor.constraint(equalTo: button2.centerYAnchor, constant: -200),
             button3.centerYAnchor.constraint(equalTo: button2.centerYAnchor, constant: 200)
         ])
+    }
+    
+    @objc func showScore(){
+        let ac = UIAlertController(title: "", message: "Score:\(score)", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "YES", style: .cancel))
+        self.present(ac, animated: true)
     }
     
     
